@@ -12,3 +12,5 @@ func function_1(using: @escaping () -> Void) -> Bool {
 }
 
 print(function_1(using: closure))
+
+

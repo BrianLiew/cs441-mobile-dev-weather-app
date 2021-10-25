@@ -13,9 +13,8 @@
 		F191781A27220B9E00841AD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F191781827220B9E00841AD3 /* Main.storyboard */; };
 		F191781C27220BA000841AD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F191781B27220BA000841AD3 /* Assets.xcassets */; };
 		F191781F27220BA000841AD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F191781D27220BA000841AD3 /* LaunchScreen.storyboard */; };
-		F191782B272265CA00841AD3 /* url_and_key.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191782A272265CA00841AD3 /* url_and_key.swift */; };
-		F191782E27251A9200841AD3 /* networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191782D27251A9200841AD3 /* networking.swift */; };
-		F191783027263BFB00841AD3 /* codable structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191782F27263BFB00841AD3 /* codable structs.swift */; };
+		F191782B272265CA00841AD3 /* URL_&_Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = F191782A272265CA00841AD3 /* URL_&_Key.swift */; };
+		F19178382727123700841AD3 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19178372727123700841AD3 /* Networking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +26,8 @@
 		F191781B27220BA000841AD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F191781E27220BA000841AD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F191782027220BA000841AD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F191782A272265CA00841AD3 /* url_and_key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = url_and_key.swift; sourceTree = "<group>"; };
-		F191782D27251A9200841AD3 /* networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = networking.swift; sourceTree = "<group>"; };
-		F191782F27263BFB00841AD3 /* codable structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "codable structs.swift"; sourceTree = "<group>"; };
+		F191782A272265CA00841AD3 /* URL_&_Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL_&_Key.swift"; sourceTree = "<group>"; };
+		F19178372727123700841AD3 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +75,8 @@
 		F191782C2722664700841AD3 /* network */ = {
 			isa = PBXGroup;
 			children = (
-				F191782A272265CA00841AD3 /* url_and_key.swift */,
-				F191782D27251A9200841AD3 /* networking.swift */,
-				F191782F27263BFB00841AD3 /* codable structs.swift */,
+				F191782A272265CA00841AD3 /* URL_&_Key.swift */,
+				F19178372727123700841AD3 /* Networking.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -155,11 +152,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F191783027263BFB00841AD3 /* codable structs.swift in Sources */,
+				F19178382727123700841AD3 /* Networking.swift in Sources */,
 				F191781727220B9E00841AD3 /* ViewController.swift in Sources */,
-				F191782E27251A9200841AD3 /* networking.swift in Sources */,
 				F191781327220B9E00841AD3 /* AppDelegate.swift in Sources */,
-				F191782B272265CA00841AD3 /* url_and_key.swift in Sources */,
+				F191782B272265CA00841AD3 /* URL_&_Key.swift in Sources */,
 				F191781527220B9E00841AD3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
