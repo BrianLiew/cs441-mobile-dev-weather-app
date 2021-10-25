@@ -9,17 +9,28 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var ret: [String: AnyObject] = [:]
+    
     // UIView declaration
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let network_instance = networking()
         
-        let network = networking()
-        let forecast_data: [String: AnyObject] = network.make_request()
+        network_instance.make_request(completion_handler: request_completion_handler)
         
-        print(forecast_data)
+        print("test: \(ret)")
+        
     }
 
+    // completion handler for make_request([String: AnyObject] -> Void)
+    func request_completion_handler(input: [String: AnyObject]) -> [String: AnyObject] {
+        ret = input
+        return ret
+    }
+    
+
+    
 }
 
