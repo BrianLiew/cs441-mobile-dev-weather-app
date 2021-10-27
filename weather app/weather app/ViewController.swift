@@ -10,26 +10,30 @@ import UIKit
 let screen_width = UIScreen.main.bounds.width
 let screen_height = UIScreen.main.bounds.height
 
-let big_font = UIFont(name: "Menlo", size: 30)
-let small_font = UIFont(name: "Menlo", size: 15)
-
+let big_font = UIFont.boldSystemFont(ofSize: 30)
+let small_font = UIFont.boldSystemFont(ofSize: 15)
 
 class ViewController: UIViewController {
 
-    // UI ELEMENT DECLARATIONS
+    // MARK: UI element declarations
+    
     // UIView
     let top_background = UIView(frame: CGRect(x: 0, y: 0, width: screen_width, height: screen_height / 2))
     let bottom_background = UIView(frame: CGRect(x: 0, y: screen_height / 2, width: screen_width, height: screen_height / 2))
     // UIImageView
-    let weather_graphic = UIImageView(frame: CGRect(x: screen_width / 2 - 150, y: screen_height / 4, width: 300, height: 200))
+    let weather_graphic = UIImageView(frame: CGRect(x: screen_width / 2 - 150, y: screen_height / 4, width: 300, height: 150))
     // UILabel
     let city_label = UILabel(frame: CGRect(x: screen_width / 2 - 150, y: screen_height / 4 - 150, width: 300, height: 100))
     let temp_label = UILabel(frame: CGRect(x: screen_width / 2 - 150, y: screen_height / 2 + 50, width: 300, height: 100))
     let temp_max_label = UILabel(frame: CGRect(x: screen_width / 2 - 150, y: screen_height / 2 + 200, width: 100, height: 50))
     let temp_min_label = UILabel(frame: CGRect(x: screen_width / 2 + 50, y: screen_height / 2 + 200, width: 100, height: 50))
     
-    var weather_data: [String: AnyObject] = [:]
-        
+    // MARK: JSONDecoder declaration
+    
+    let decoder = JSONDecoder()
+    
+    // MARK: ViewController functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -38,6 +42,8 @@ class ViewController: UIViewController {
         let network_instance = Networking()
         network_instance.make_request(completion_handler: request_completion_handler)
     }
+    
+    // MARK: custom functions
     
     func init_UI() {
         top_background.backgroundColor = UIColor.purple
@@ -49,9 +55,9 @@ class ViewController: UIViewController {
         temp_min_label.backgroundColor = UIColor.blue
         
         city_label.text = "-"
-        temp_label.text = "0.00 ℉"
-        temp_max_label.text = "0.00 ℉"
-        temp_min_label.text = "0.00 ℉"
+        temp_label.text = "0.00 °F"
+        temp_max_label.text = "0.00 °F"
+        temp_min_label.text = "0.00 °F"
         
         city_label.textAlignment = .center
         temp_label.textAlignment = .center
@@ -71,32 +77,38 @@ class ViewController: UIViewController {
         view.addSubview(temp_max_label)
         view.addSubview(temp_min_label)
     }
-
+    
     // completion handler for make_request(). parser from Data? -> [String: AnyObject]
     func request_completion_handler(json: Data?) -> Void {
         if let json_unwrapped = json {
-            if let json_data = try? JSONSerialization.jsonObject(with: json_unwrapped, options: []) {
-                DispatchQueue.main.async {
-                    self.weather_data = json_data as! [String: AnyObject]
-                    for (key, value) in self.weather_data { print("\(key): \(value)")}
-                    // let parsed_weather_data = self.parse_subNSDictionary(data: self.weather_data)
-                    // for (key, value) in parsed_weather_data { print("\(key): \(value)")}
+            DispatchQueue.main.async {
+                let weather_data = try? self.decoder.decode(weather_data.self, from: json_unwrapped)
+                if let weather_data_unwrapped = weather_data {
+                    self.update_UI(
+                        city_name: weather_data_unwrapped.name,
+                        temp_double: weather_data_unwrapped.main.temp,
+                        temp_max_double: weather_data_unwrapped.main.temp_max,
+                        temp_min_double: weather_data_unwrapped.main.temp_min
+                    )
                 }
-            } else {
-                print("json serialiation error")
+                
             }
         } else {
             print("json unwrap error")
         }
     }
     
-    /*
-    func parse_subNSDictionary(data: [String: AnyObject]) -> [String: AnyObject] {
-        var ret: [String: AnyObject] = [:]
-        for (key, value) in data {
-        }
+    func update_UI(
+        city_name: String,
+        temp_double: Double,
+        temp_max_double: Double,
+        temp_min_double: Double
+    ) -> Void {
+        self.city_label.text = city_name
+        self.temp_label.text = String(format: "%.1f", convert_kelvin_to_fahrenheit(input: temp_double)) + "°F"
+        self.temp_max_label.text = String(format: "%.1f", convert_kelvin_to_fahrenheit(input: temp_max_double)) + "°F"
+        self.temp_min_label.text = String(format: "%.1f", convert_kelvin_to_fahrenheit(input: temp_min_double)) + "°F"
     }
-    */
     
 }
 
