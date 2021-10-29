@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     let temperature_background = UIView(frame: CGRect(x: 0, y: screen_height / 2, width: screen_width, height: 175))
     let wind_background = UIView(frame: CGRect(x: 0, y: screen_height / 2 + 175, width: screen_width, height: 175))
     // UIImageView
-    let weather_graphic = UIImageView(frame: CGRect(x: screen_width / 2 - 150, y: screen_height / 4 + 50, width: 300, height: 125))
+    let weather_graphic = UIImageView(frame: CGRect(x: screen_width / 2 - 100, y: screen_height / 4 + 25, width: 200, height: 175))
     // UILabel
     let city_label = UILabel(frame: CGRect(x: 0, y: screen_height / 4 - 150, width: screen_width, height: 100))
     // DESCRIPTION
