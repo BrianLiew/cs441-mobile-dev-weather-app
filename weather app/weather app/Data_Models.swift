@@ -10,7 +10,12 @@ import Foundation
 struct weather_data: Codable {
     var name: String
     var main: main
-    // var weather: weather
+    var sys: sys
+    var wind: wind
+    var weather: [Weather]
+    
+    func return_description() -> String { return weather[0].description }
+    func return_icon() -> String { return weather[0].icon }
 }
 
 struct main: Codable {
@@ -19,11 +24,16 @@ struct main: Codable {
     var temp_min: Double
 }
 
-/*
-struct weather: Codable {
+struct sys: Codable {
+    var country: String
+}
+
+struct wind: Codable {
+    var deg: Int
+    var speed: Double
+}
+
+struct Weather: Codable {
     var description: String
     var icon: String
-    var id: Int
-    var main: String
 }
- */
