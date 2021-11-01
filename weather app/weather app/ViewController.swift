@@ -69,6 +69,9 @@ class ViewController: UIViewController {
         wind_deg_label.backgroundColor = UIColor(red: 0.6, green: 0.6, blue: 1.0, alpha: 1.0)
         wind_speed_label.backgroundColor = UIColor(red: 0, green: 0.6, blue: 1.0, alpha: 1.0)
         
+        temp_label.layer.cornerRadius = 0.5
+        temp_label.layer.masksToBounds = true
+        
         city_label.text = "-"
         weather_description_label.text = "-"
         temp_title.text = "Temperature"
@@ -129,7 +132,7 @@ class ViewController: UIViewController {
         self.temp_label.text = String(format: "%.1f", convert_kelvin_to_fahrenheit(input: temp_double)) + "°F"
         self.temp_max_label.text = String(format: "%.1f", convert_kelvin_to_fahrenheit(input: temp_max_double)) + "°F"
         self.temp_min_label.text = String(format: "%.1f", convert_kelvin_to_fahrenheit(input: temp_min_double)) + "°F"
-        self.wind_deg_label.text = String(format: "%d", wind_deg_int) + "°"
+        self.wind_deg_label.text = convert_deg_to_direction(input: wind_deg_int)
         self.wind_speed_label.text = String(format: "%.2f", wind_speed_double) + " mph"
     }
     
@@ -159,4 +162,3 @@ class ViewController: UIViewController {
     }
     
 }
-
